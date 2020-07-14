@@ -27,6 +27,10 @@ module.exports = function(seq, Seq) {
             type: Seq.STRING(100),
             allowNull: false
         },
+        Birthdate: {
+            type: Seq.DATEONLY,
+            allowNull: false
+        },
         Height: {
             type: Seq.REAL,
             allowNull: true
@@ -34,11 +38,19 @@ module.exports = function(seq, Seq) {
         Weight: {
             type: Seq.REAL,
             allowNull: true
-        },
-        Birthdate: {
-            type: Seq.DATEONLY,
-            allowNull: false
         }
+
+    }, {
+        indexes: [{
+                name: 'userId_index',
+                using: 'BTREE',
+                fields: ['User_ID']
+            },
+            {
+                unique: true,
+                fields: ['Login']
+            }
+        ]
     })
     return User
 }

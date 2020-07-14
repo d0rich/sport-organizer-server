@@ -31,7 +31,7 @@ const sequelize = new Sequelize(db.database, db.user, db.password, {
 
 const models = require('./app/models')(sequelize)
 
-sequelize.sync().then(result => {
+sequelize.sync({ force: true }).then(result => {
     console.log(result.models)
     app.listen(port, function() {
         console.log('We are live on ' + port);

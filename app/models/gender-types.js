@@ -10,7 +10,14 @@ module.exports = function(seq, Seq, User) {
             type: Seq.STRING(50),
             allowNull: false
         }
+    }, {
+        indexes: [{
+            name: 'Gender-typeId_index',
+            using: 'BTREE',
+            fields: ['ID']
+        }]
     })
-    Gender_type.hasMany(User)
+
+    Gender_type.hasMany(User, { onDelete: 'SET NULL', onUpdate: 'CASCADE' })
     return Gender_type
 }
