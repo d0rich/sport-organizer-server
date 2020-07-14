@@ -1,4 +1,5 @@
 module.exports = {
+    timestamps: false,
     host: 'ec2-54-217-213-79.eu-west-1.compute.amazonaws.com',
     database: 'd6svj1k0v3r3qk',
     user: 'adgmupbquwzarr',

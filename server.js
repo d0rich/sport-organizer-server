@@ -2,7 +2,7 @@ const express = require('express');
 const jsonParser = express.json();
 const bodyParser = require('body-parser');
 
-const db = require('./config/db');
+const db = require('./config/db-codefirst');
 const Sequelize = require("sequelize");
 
 
@@ -10,7 +10,7 @@ const nodemailer = require('nodemailer');
 const renderer = require('vue-server-renderer').createRenderer();
 
 const app = express();
-const port = process.env.PORT || 5432;
+const port = process.env.PORT || 3000;
 var cors = require('cors');
 const { on } = require('nodemon');
 
@@ -18,21 +18,22 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 const sequelize = new Sequelize(db.database, db.user, db.password, {
     dialect: "postgres",
-    host: db.host,
     protocol: 'postgres',
+    host: db.host,
     dialectOptions: {
         ssl: {
             require: true,
-            rejectUnauthorized: false // <<<<<<< YOU NEED THIS
+            rejectUnauthorized: false
         }
-    }
+    },
+    define: { timestamps: db.timestamps }
 });
-async function a() {
-    try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-}
-a();
+
+const models = require('./app/models')(sequelize)
+
+sequelize.sync().then(result => {
+    console.log(result.models)
+    app.listen(port, function() {
+        console.log('We are live on ' + port);
+    });
+}).catch(err => console.log(err));
