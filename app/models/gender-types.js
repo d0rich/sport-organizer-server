@@ -6,7 +6,7 @@ module.exports = function(seq, Seq, User) {
             primaryKey: true,
             allowNull: false
         },
-        Gender_type_Name: {
+        Name: {
             type: Seq.STRING(50),
             allowNull: false
         }

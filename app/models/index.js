@@ -14,12 +14,30 @@ module.exports = function(seq) {
         //Секции
     const Section = require('./sections')(seq, DataTypes)
     Section.belongsTo(Sport_type, { onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Section.belongsTo(User, { as: 'Creator', onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+        //Группы
+    const Group = require('./groups')(seq, DataTypes)
+    const Age_type = require('./age-types')(seq, DataTypes)
+    Group.belongsTo(Age_type, { onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+        //Спортсмены
+    const Trainee = require('./trainees')(seq, DataTypes)
+    User.belongsToMany(Group, { through: Trainee, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Group.belongsToMany(User, { through: Trainee, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+        //Тренера
+    const Trainer = require('./trainers')(seq, DataTypes)
+    User.belongsToMany(Group, { through: Trainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Group.belongsToMany(User, { through: Trainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+        //
 
     return {
         User: User,
         Gender_type: Gender_type,
         Users_sport: Users_sport,
         Sport_type: Sport_type,
-        Section: Section
+        Section: Section,
+        Group: Group,
+        Age_type: Age_type,
+        Trainee: Trainee,
+        Trainer: Trainer
     }
 }

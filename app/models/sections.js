@@ -9,11 +9,10 @@ module.exports = function(seq, Seq) {
         Name: {
             type: Seq.STRING(50),
             allowNull: false,
-            unique: true
         },
         Description: {
-            type: Seq.STRING,
-            allowNull: false
+            type: Seq.TEXT,
+            allowNull: true
         }
     }, {
         indexes: [{
