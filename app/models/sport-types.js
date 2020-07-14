@@ -1,18 +1,18 @@
-module.exports = function(seq, Seq, User) {
-    return seq.define("Gender-type", {
+module.exports = function(seq, Seq) {
+    return seq.define("Sport-type", {
         ID: {
             type: Seq.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        Gender_type_Name: {
+        Sport_type_Name: {
             type: Seq.STRING(50),
             allowNull: false
         }
     }, {
         indexes: [{
-            name: 'Gender-typeId_index',
+            name: 'Sport-typeId_index',
             using: 'BTREE',
             fields: ['ID']
         }]

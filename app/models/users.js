@@ -1,6 +1,6 @@
 module.exports = function(seq, Seq) {
-    const User = seq.define("User", {
-        User_ID: {
+    return seq.define("User", {
+        ID: {
             type: Seq.UUID,
             defaultValue: Seq.UUIDV4,
             primaryKey: true,
@@ -44,7 +44,7 @@ module.exports = function(seq, Seq) {
         indexes: [{
                 name: 'userId_index',
                 using: 'BTREE',
-                fields: ['User_ID']
+                fields: ['ID']
             },
             {
                 unique: true,
@@ -52,5 +52,4 @@ module.exports = function(seq, Seq) {
             }
         ]
     })
-    return User
 }
