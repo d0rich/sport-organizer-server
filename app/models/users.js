@@ -11,12 +11,21 @@ module.exports = function(seq, Seq) {
             allowNull: false,
             unique: true
         },
+        PhoneNumber: {
+            type: Seq.STRING(50),
+            allowNull: true
+        },
+        Email: {
+            type: Seq.STRING(200),
+            allowNull: false
+        },
         Password: {
             type: Seq.STRING(300),
             allowNull: false
         },
         Salt: {
             type: Seq.STRING(100),
+            defaultValue: Seq.UUIDV4,
             allowNull: false
         },
         Name: {

@@ -33,6 +33,7 @@ const models = require('./app/models')(sequelize)
 
 sequelize.sync({ force: true }).then(result => {
     console.log(result.models)
+    require('./app/routes')(app, models, jsonParser);
     app.listen(port, function() {
         console.log('We are live on ' + port);
     });
