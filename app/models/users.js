@@ -17,7 +17,12 @@ module.exports = function(seq, Seq) {
         },
         Email: {
             type: Seq.STRING(200),
-            allowNull: false
+            allowNull: false,
+            isEmail: true
+        },
+        ActivateCode: {
+            type: Seq.STRING(50),
+            allowNull: true
         },
         Password: {
             type: Seq.STRING(300),
@@ -25,7 +30,6 @@ module.exports = function(seq, Seq) {
         },
         Salt: {
             type: Seq.STRING(100),
-            defaultValue: Seq.UUIDV4,
             allowNull: false
         },
         Name: {
@@ -38,7 +42,8 @@ module.exports = function(seq, Seq) {
         },
         Birthdate: {
             type: Seq.DATEONLY,
-            allowNull: false
+            allowNull: false,
+            isDate: true
         },
         Height: {
             type: Seq.REAL,
