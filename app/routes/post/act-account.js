@@ -1,7 +1,7 @@
 const auth = require('../../../config/email');
 
 module.exports = function(app, models, jsonParser, nodemailer) {
-    app.post('/act-accaunt', jsonParser, async(req, res) => {
+    app.post('/act-account', jsonParser, async(req, res) => {
         if (!req.body) return res.sendStatus(400);
         if (!req.body.login) return res.sendStatus(400);
         if (!req.body.activateCode) return res.sendStatus(400);
