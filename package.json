@@ -23,10 +23,6 @@
     "vue-server-renderer": "^2.6.11",
     "xmlhttprequest": "^1.8.0"
   },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "12.16.x"
-  },
   "devDependencies": {
     "nodemon": "^2.0.4"
   }
