@@ -9,6 +9,9 @@
   },
   "author": "dorich prod.",
   "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -22,9 +25,6 @@
     "vue": "^2.6.11",
     "vue-server-renderer": "^2.6.11",
     "xmlhttprequest": "^1.8.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
   },
   "engines": {
     "node": "12.16.2",
