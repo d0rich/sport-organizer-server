@@ -21,7 +21,15 @@ module.exports = function(app, models, jsonParser, nodemailer) {
             })
             .then(result => {
                 console.log(result.dataValues);
-                res.send(result.dataValues)
+                let user_sports = []
+                NewUser.Sports.forEach(sportID => {
+                    user_sports.push({
+                        SportTypeID: sportID,
+                        UserID: dataValues.ID
+                    })
+                });
+                models.Users_sport.bulkCreate(user_sports)
+                    .catch(err => res.send(err))
             }).catch(err => res.send(err))
 
         let transporter = nodemailer.createTransport({

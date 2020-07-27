@@ -1,3 +1,10 @@
+var crypto = require('crypto');
+
+const encodeBase64Url = function(string) {
+    let Base64 = Buffer.from(string).toString('base64')
+    return Base64
+}
+
 module.exports = function(app, models) {
     app.get('/authorize', async(req, res) => {
         const Login = req.param('login')
@@ -11,7 +18,19 @@ module.exports = function(app, models) {
             })
             .then(user => {
                 if (user == null) return res.sendStatus(404)
-                res.send(user)
+                console.log('wasted')
+                let header = { alg: "SHA256", typ: "JWT" }
+                let payload = {
+                    userID: user.ID,
+                    created: new Date().toISOString(),
+                    sub: 'access'
+                }
+                let secretKey = 'S4vEHyg69aLL1uLLlk4'
+                let unsignedToken = encodeBase64Url(JSON.stringify(header)) + '.' + encodeBase64Url(JSON.stringify(payload))
+                let signature = crypto.createHmac('sha256', secretKey).update(unsignedToken).digest('hex')
+                let token = encodeBase64Url(JSON.stringify(header)) + '.' + encodeBase64Url(JSON.stringify(payload)) + '.' + encodeBase64Url(signature)
+                res.send(token)
+
             }).catch(err => {
                 res.send(err)
             })
