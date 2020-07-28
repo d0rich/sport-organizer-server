@@ -63,6 +63,12 @@ module.exports = function(seq) {
     Notification.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
     User.hasMany(Notification)
 
+    //Коды приглашений в группы
+    const Invitation = require('./invitation')(seq, DataTypes)
+    Invitation.belongsTo(Group, { foreignKey: { allowNull: false }, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Group.hasMany(Invitation)
+
+
     return {
         User: User,
         Gender_type: Gender_type,
@@ -78,6 +84,7 @@ module.exports = function(seq) {
         Event_Group: Event_Group,
         NewsNote: NewsNote,
         Notification: Notification,
-        Not_type: Not_type
+        Not_type: Not_type,
+        Invitation: Invitation
     }
 }
