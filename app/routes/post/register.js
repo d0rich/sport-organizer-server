@@ -29,8 +29,8 @@ module.exports = function(app, models, jsonParser, nodemailer) {
           })
         });
         models.Users_sport.bulkCreate(user_sports)
-          .catch(err => res.send(err))
-      }).catch(err => res.send(err))
+          .catch(err => console.log(err.message))
+      }).catch(err => console.log(err.message))
 
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -45,9 +45,10 @@ module.exports = function(app, models, jsonParser, nodemailer) {
 
     await transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log(error);
+        console.log(error.message);
       } else {
         console.log('Email sent: ' + info.res);
+        res.sendStatus(200)
       }
     });
   })
