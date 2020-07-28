@@ -5,10 +5,11 @@ const encodeBase64Url = function(string) {
     return Base64
 }
 
-module.exports = function(app, models) {
-    app.get('/authorize', async(req, res) => {
-        const Login = req.param('login')
-        const Password = req.param('password')
+module.exports = function(app, models, jsonParser) {
+    app.post('/authorize', jsonParser, async(req, res) => {
+        if (!req.body) return res.sendStatus(400)
+        const Login = req.body.login
+        const Password = req.body.password
         if (!Login || !Password) return res.sendStatus(400)
         models.User.findOne({
                 where: {
