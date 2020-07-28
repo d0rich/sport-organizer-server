@@ -16,24 +16,24 @@ var cors = require('cors');
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 const sequelize = new Sequelize(db.database, db.user, db.password, {
-  dialect: "postgres",
-  protocol: 'postgres',
-  host: db.host,
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  },
-  define: { timestamps: db.timestamps }
+    dialect: "postgres",
+    protocol: 'postgres',
+    host: db.host,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    },
+    define: { timestamps: db.timestamps }
 });
 
 const models = require('./app/models')(sequelize)
 
 sequelize.sync({ force: false }).then(result => {
-  console.log(result.models)
-  require('./app/routes')(app, models, jsonParser, nodemailer);
-  app.listen(port, function() {
-    console.log('We are live on ' + port);
-  });
+    console.log(result.models)
+    require('./app/routes')(app, models, jsonParser, nodemailer);
+    app.listen(port, function() {
+        console.log('We are live on ' + port);
+    });
 }).catch(err => console.log(err));

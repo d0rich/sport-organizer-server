@@ -1,4 +1,4 @@
-module.exports = function(app, models, jsonParser, nodemailer) {
+module.exports = function(app, models, jsonParser) {
     app.post('/createSection', jsonParser, async(req, res) => {
         if (!req.body) return res.sendStatus(400);
         const NewSection = req.body;
@@ -12,7 +12,7 @@ module.exports = function(app, models, jsonParser, nodemailer) {
                 .then(result => {
                     console.log(result.dataValues);
                     res.send(result.dataValues)
-                }).catch(err => res.send(err))
+                }).catch(err => console.log(err))
         })
     })
 }
