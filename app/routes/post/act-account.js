@@ -13,7 +13,10 @@ module.exports = function(app, models, jsonParser, nodemailer) {
 
     if (user.ActivateCode == actData.activateCode)
       await models.User.update({ ActivateCode: null }, { where: { ID: user.ID } })
-      .catch(err => (console.log(err)))
+      .catch(err => {
+        console.log(err)
+        return res.sendStatus(500)
+      })
 
     user = await models.User.findByPk(user.ID).catch(err => (console.log(err)))
     if (user.ActivateCode != null) return res.sendStatus(500);
