@@ -1,6 +1,6 @@
 module.exports = function(app, models) {
     app.get('/get_group', async(req, res) => {
-        const ID = req.param('id')
+        const ID = req.param('groupID')
         console.log(ID)
         if (!ID) return res.sendStatus(400)
         let detail = {}
