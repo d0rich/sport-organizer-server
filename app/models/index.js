@@ -27,12 +27,12 @@ module.exports = function(seq) {
     Age_type.hasMany(Group)
         //Спортсмены
     const Trainee = require('./trainees')(seq, DataTypes)
-    User.belongsToMany(Group, { through: Trainee, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
-    Group.belongsToMany(User, { through: Trainee, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    User.belongsToMany(Group, { as: 'TraineeIn', through: Trainee, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Group.belongsToMany(User, { as: 'Trainees', through: Trainee, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
         //Тренера
     const Trainer = require('./trainers')(seq, DataTypes)
-    User.belongsToMany(Group, { through: Trainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
-    Group.belongsToMany(User, { through: Trainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    User.belongsToMany(Group, { as: 'TrainerIn', through: Trainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Group.belongsToMany(User, { as: 'Trainers', through: Trainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
         //События
     const Event = require('./events')(seq, DataTypes)
     const Event_type = require('./event-types')(seq, DataTypes)
