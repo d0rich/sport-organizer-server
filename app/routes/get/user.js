@@ -10,7 +10,7 @@ module.exports = function(app, models) {
         models.User.findOne({
                 where: detail,
                 include: [
-                    { model: models.Sport_type, attributes: ['ID', 'Name'], through: { attributes: [] } },
+                    { model: models.Sport_type, as: 'Sports', attributes: ['ID', 'Name'], through: { attributes: [] } },
                     { model: models.Section, attributes: ['ID', 'Name'] },
                     { model: models.Group, as: 'TrainerIn', attributes: ['ID', 'Name'], through: { model: models.Trainer, attributes: [] } },
                     { model: models.Group, as: 'TraineeIn', attributes: ['ID', 'Name'], through: { model: models.Trainee, attributes: [] } }

@@ -11,7 +11,7 @@ module.exports = function(seq) {
     const Users_sport = require('./users-sports')(seq, DataTypes)
     const Sport_type = require('./sport-types')(seq, DataTypes)
     Sport_type.belongsToMany(User, { through: Users_sport, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
-    User.belongsToMany(Sport_type, { through: Users_sport, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    User.belongsToMany(Sport_type, { as: 'Sports', through: Users_sport, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
         //Секции
     const Section = require('./sections')(seq, DataTypes)
         //Секции по видам спорта
