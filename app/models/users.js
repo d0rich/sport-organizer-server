@@ -45,6 +45,29 @@ module.exports = function(seq, Seq) {
             allowNull: false,
             isDate: true
         },
+        Age: {
+            type: Seq.VIRTUAL,
+            get() {
+                const Now = new Date()
+                const NowYear = Now.getFullYear()
+                const NowMonth = Now.getMonth()
+                const NowDay = Now.getDate()
+
+                const Birthdate = new Date(this.Birthdate)
+                const BdYear = Birthdate.getFullYear()
+                const BdMonth = Birthdate.getMonth()
+                const BdDay = Birthdate.getDate()
+
+                let koeff = 0
+                if (BdMonth < NowMonth) koeff = -1
+                else {
+                    if (BdMonth == NowMonth) {
+                        if (BdDay < NowDay) koeff = -1
+                    }
+                }
+                return (NowYear - BdYear + koeff)
+            }
+        },
         Height: {
             type: Seq.REAL,
             allowNull: true
