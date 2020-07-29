@@ -59,10 +59,10 @@ module.exports = function(seq, Seq) {
                 const BdDay = Birthdate.getDate()
 
                 let koeff = 0
-                if (BdMonth < NowMonth) koeff = -1
+                if (BdMonth > NowMonth) koeff = -1
                 else {
                     if (BdMonth == NowMonth) {
-                        if (BdDay < NowDay) koeff = -1
+                        if (BdDay > NowDay) koeff = -1
                     }
                 }
                 return (NowYear - BdYear + koeff)
