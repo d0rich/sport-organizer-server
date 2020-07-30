@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/notsDict', async(req, res) => {
+    app.get('/notsDict', (req, res) => {
         const nots = await models.Not_type.findAll({
                 attributes: ['ID', 'Name']
             })
