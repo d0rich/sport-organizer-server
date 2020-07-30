@@ -3,6 +3,6 @@ module.exports = function(app, models) {
         const genders = await models.Gender_type.findAll({
             attributes: ['ID', 'Name']
         })
-        res.send({ genders })
+        res.send(genders)
     })
 }

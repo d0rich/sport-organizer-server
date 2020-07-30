@@ -3,6 +3,6 @@ module.exports = function(app, models) {
         const sports = await models.Sport_type.findAll({
             attributes: ['ID', 'Name']
         })
-        res.send({ sports })
+        res.send(sports)
     })
 }

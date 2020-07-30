@@ -3,6 +3,6 @@ module.exports = function(app, models) {
         const nots = await models.Not_type.findAll({
             attributes: ['ID', 'Name']
         })
-        res.send({ nots })
+        res.send(nots)
     })
 }
