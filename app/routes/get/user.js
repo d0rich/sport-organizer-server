@@ -21,7 +21,7 @@ module.exports = function(app, models) {
                 res.send(user)
             })
             .catch(err => {
-                console.log(err)
+                console.error(err)
                 res.sendStatus(500)
             })
     })

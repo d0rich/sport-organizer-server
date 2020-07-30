@@ -20,7 +20,7 @@ module.exports = function(app, models) {
                 res.send(group)
             })
             .catch(err => {
-                console.log(err)
+                console.error(err)
                 res.sendStatus(500)
             })
     })

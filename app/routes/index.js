@@ -1,5 +1,11 @@
 const test = require('./test')
 
+//dictionaries
+const getEventDict = require('./dictionaries/eventsDict')
+const getGenderDict = require('./dictionaries/gendersDict')
+const getNotDict = require('./dictionaries/notsDict')
+const getSporttDict = require('./dictionaries/sportsDict')
+
 //post
 const register = require('./post/register')
 const actAccount = require('./post/act-account')
@@ -11,13 +17,18 @@ const authorize = require('./post/authorize')
 
 //get
 const getUser = require('./get/user')
-const getRegInf = require('./get/get_reg_inf')
 const getSection = require('./get/get_section')
 const getGroup = require('./get/get_group')
 
 module.exports = function(app, models, jsonParser, nodemailer) {
 
     test(app, models, jsonParser)
+
+    //dictionaries
+    getEventDict(app, models)
+    getGenderDict(app, models)
+    getNotDict(app, models)
+    getSporttDict(app, models)
 
     //post
     register(app, models, jsonParser, nodemailer)
@@ -30,7 +41,6 @@ module.exports = function(app, models, jsonParser, nodemailer) {
 
     //get
     getUser(app, models)
-    getRegInf(app, models)
     getSection(app, models)
     getGroup(app, models)
 
