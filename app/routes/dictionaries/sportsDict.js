@@ -1,6 +1,6 @@
 module.exports = function(app, models) {
     app.get('/sportsDict', (req, res) => {
-        const sports = await models.Sport_type.findAll({
+        models.Sport_type.findAll({
                 attributes: ['ID', 'Name']
             })
             .then(sports => {
