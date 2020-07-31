@@ -18,9 +18,10 @@ module.exports = function(seq) {
     Section.belongsTo(Sport_type, { foreignKey: { allowNull: false }, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
     Sport_type.hasMany(Section)
         //Создатель секции
-    Section.belongsTo(User, { as: 'Creator', foreignKey: { allowNull: false }, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
-        //User.hasMany(Section)
-        //Группы
+    User.hasMany(Section)
+    Section.belongsTo(User, { foreignKey: { allowNull: false }, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+
+    //Группы
     const Group = require('./groups')(seq, DataTypes)
     const Age_type = require('./age-types')(seq, DataTypes)
     Group.belongsTo(Age_type, { foreignKey: { allowNull: false }, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
