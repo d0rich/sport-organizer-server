@@ -36,4 +36,4 @@ sequelize.sync({ force: false }).then(result => {
     app.listen(port, function() {
         console.log('We are live on ' + port);
     });
-}).catch(err => console.log(err));
+}).catch(err => console.error(err));
