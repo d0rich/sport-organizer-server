@@ -24,25 +24,25 @@ module.exports = function(app, models, jsonParser) {
             models.Gender_type.create({ Name: gender })
                 .then(result => {
                     console.log(result.dataValues);
-                }).catch(err => console.log(err))
+                }).catch(err => console.error(err))
         });
         Sports.forEach(sport => {
             models.Sport_type.create({ Name: sport })
                 .then(result => {
                     console.log(result.dataValues);
-                }).catch(err => console.log(err))
+                }).catch(err => console.error(err))
         });
         Events.forEach(event => {
             models.Event_type.create({ Name: event })
                 .then(result => {
                     console.log(result.dataValues);
-                }).catch(err => console.log(err))
+                }).catch(err => console.error(err))
         });
         Nots.forEach(not => {
             models.Not_type.create({ Name: not })
                 .then(result => {
                     console.log(result.dataValues);
-                }).catch(err => console.log(err))
+                }).catch(err => console.error(err))
         });
         res.send('xyz')
     })

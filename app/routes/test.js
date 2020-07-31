@@ -7,7 +7,7 @@ module.exports = function(app, models, jsonParser) {
                 Name: req.body.Name,
             }).then(result => {
                 console.log(result.dataValues);
-            }).catch(err => console.log(err))
+            }).catch(err => console.error(err))
             .then(
                 await models.Sport_type.findAll()
                 .then(users =>

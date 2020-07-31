@@ -13,7 +13,7 @@ module.exports = function(app, models, jsonParser) {
                 .then(result => {
                     console.log(result.dataValues);
                     res.send(result.dataValues)
-                }).catch(err => console.log(err))
+                }).catch(err => console.error(err))
         })
     })
 }

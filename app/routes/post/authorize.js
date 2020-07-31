@@ -35,7 +35,7 @@ module.exports = function(app, models, jsonParser) {
                 })
             })
             .catch(err => {
-                console.log(err.message)
+                console.error(err.message)
             })
 
     })
