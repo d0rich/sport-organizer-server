@@ -30,7 +30,7 @@ const sequelize = new Sequelize(db.database, db.user, db.password, {
 
 const models = require('./app/models')(sequelize)
 
-sequelize.sync({ force: false, alter: true }).then(result => {
+sequelize.sync({ force: false, alter: false }).then(result => {
   console.log(result.models)
   require('./app/routes')(app, models, jsonParser, nodemailer);
   app.listen(port, function() {
