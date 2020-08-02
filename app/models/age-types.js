@@ -8,11 +8,11 @@ module.exports = function(seq, Seq) {
         },
         Name: {
             type: Seq.STRING(50),
-            allowNull: false,
+            allowNull: false
         },
         Age_range: {
             type: Seq.RANGE(Seq.INTEGER),
-            allowNull: true
+            allowNull: false
         }
 
     }, {
