@@ -13,6 +13,7 @@ const fillDictionary = require('./post/fillDictionary')
 const createAT = require('./post/creation/createAT')
 const createSection = require('./post/creation/createSection')
 const createGroup = require('./post/creation/createGroup')
+const createInvitation = require('./post/creation/createInvitation')
 const createEvent = require('./post/creation/createEvent')
 const authorize = require('./post/authorize')
 
@@ -39,6 +40,7 @@ module.exports = function(app, models, jsonParser, nodemailer) {
     createAT(app, models, jsonParser)
     createSection(app, models, jsonParser)
     createGroup(app, models, jsonParser)
+    createInvitation(app, models, jsonParser)
     createEvent(app, models, jsonParser)
     authorize(app, models, jsonParser)
 

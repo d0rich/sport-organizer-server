@@ -1,7 +1,8 @@
 module.exports = function(app, models) {
     app.get('/sportsDict', (req, res) => {
         models.Sport_type.findAll({
-                attributes: ['ID', 'Name']
+                attributes: ['ID', 'Name'],
+                order: ['Name']
             })
             .then(sports => {
                 res.send(sports)

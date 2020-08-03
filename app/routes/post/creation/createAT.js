@@ -14,6 +14,9 @@ module.exports = function(app, models, jsonParser) {
             .then(result => {
                 console.log(result.dataValues);
                 res.send(result.dataValues)
-            }).catch(err => console.error(err))
+            }).catch(err => {
+                console.error(err)
+                res.sendStatus(500)
+            })
     })
 }

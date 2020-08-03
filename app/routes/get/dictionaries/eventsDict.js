@@ -1,7 +1,8 @@
 module.exports = function(app, models) {
     app.get('/eventsDict', (req, res) => {
         models.Event_type.findAll({
-                attributes: ['ID', 'Name']
+                attributes: ['ID', 'Name'],
+                order: ['Name']
             })
             .then(events => {
                 res.send(events)
