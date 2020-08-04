@@ -16,6 +16,8 @@ const createGroup = require('./post/creation/createGroup')
 const createInvitation = require('./post/creation/createInvitation')
 const createEvent = require('./post/creation/createEvent')
 const authorize = require('./post/authorize')
+const updateInf = require('./post/updateInf')
+const useInvitation = require('./post/useInvitation')
 
 //get
 const getUser = require('./get/user')
@@ -43,6 +45,8 @@ module.exports = function(app, models, jsonParser, nodemailer) {
     createInvitation(app, models, jsonParser)
     createEvent(app, models, jsonParser)
     authorize(app, models, jsonParser)
+    updateInf(app, models, jsonParser)
+    useInvitation(app, models, jsonParser)
 
     //get
     getUser(app, models)
