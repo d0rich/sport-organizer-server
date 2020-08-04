@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/get_at', async(req, res) => {
+    app.get('/get_at', (req, res) => {
         const UserID = req.param('UserID')
         console.log(UserID)
         if (!UserID) return res.sendStatus(400)

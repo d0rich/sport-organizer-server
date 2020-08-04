@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/get_group', async(req, res) => {
+    app.get('/get_group', (req, res) => {
         const ID = req.param('groupID')
         console.log(ID)
         if (!ID) return res.sendStatus(400)
@@ -8,7 +8,7 @@ module.exports = function(app, models) {
         models.Group.findOne({
                 where: detail,
                 include: [
-                    { model: models.Section, attributes: ['ID', 'Name'] },
+                    { model: models.Section, attributes: ['ID', 'Name'], include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }] },
                     { model: models.User, as: 'Trainers', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainer, attributes: [] } },
                     { model: models.User, as: 'Trainees', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainee, attributes: [] } },
                     { model: models.NewsNote, attributes: ['ID', 'Header', 'Text', 'Time'] },
