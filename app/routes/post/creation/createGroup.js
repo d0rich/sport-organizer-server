@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/createGroup', jsonParser, async(req, res) => {
+    app.post('/createGroup', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const NewGroup = req.body;
         models.Group.create({

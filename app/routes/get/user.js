@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/user', async(req, res) => {
+    app.get('/user', (req, res) => {
         const Login = req.param('login')
         const ID = req.param('id')
         console.log(ID)

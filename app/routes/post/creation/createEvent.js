@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/createEvent', jsonParser, async(req, res) => {
+    app.post('/createEvent', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const NewEvent = req.body;
         models.Event.create({
