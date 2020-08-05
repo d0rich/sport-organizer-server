@@ -45,6 +45,16 @@ module.exports = function(app, models, jsonParser) {
                             console.error(err)
                             res.sendStatus(500)
                         })
+                } else {
+                    models.Invitation.destroy({ where: { Code: Code } })
+                        .then(response => {
+                            res.send(response)
+                            res.sendStatus(404)
+                        })
+                        .catch(err => {
+                            console.error(err)
+                            res.sendStatus(500)
+                        })
                 }
             })
             .catch(err => {
