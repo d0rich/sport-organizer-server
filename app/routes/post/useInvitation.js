@@ -27,7 +27,7 @@ module.exports = function(app, models, jsonParser) {
                         GroupID: code.Group.ID,
                         UserID: UserID
                     })
-                    if (code.EntranceNum == 0) {
+                    if (code.EntranceNum - 1 <= 0) {
                         models.Invitation.destroy({ where: { Code: Code } })
                             .then(response => {
                                 res.send(response)
@@ -40,6 +40,16 @@ module.exports = function(app, models, jsonParser) {
                         models.Invitation.update({ EntranceNum: code.EntranceNum - 1 }, { where: { Code: Code } })
                         .then(response => {
                             res.send(response)
+                        })
+                        .catch(err => {
+                            console.error(err)
+                            res.sendStatus(500)
+                        })
+                } else {
+                    models.Invitation.destroy({ where: { Code: Code } })
+                        .then(response => {
+                            res.send(response)
+                            res.sendStatus(404)
                         })
                         .catch(err => {
                             console.error(err)
