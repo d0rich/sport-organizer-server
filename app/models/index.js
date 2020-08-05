@@ -93,6 +93,7 @@ module.exports = function(seq) {
         NewsNote,
         Notification,
         Not_type,
-        Invitation
+        Invitation,
+        Trainer_Invitation
     }
 }
