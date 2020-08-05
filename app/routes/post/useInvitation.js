@@ -27,7 +27,7 @@ module.exports = function(app, models, jsonParser) {
                         GroupID: code.Group.ID,
                         UserID: UserID
                     })
-                    if (code.EntranceNum === 0) {
+                    if (code.EntranceNum - 1 <= 0) {
                         models.Invitation.destroy({ where: { Code: Code } })
                             .then(response => {
                                 res.send(response)
