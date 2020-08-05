@@ -29,8 +29,8 @@ module.exports = function(app, models, jsonParser) {
                     })
                     if (code.EntranceNum - 1 <= 0) {
                         models.Invitation.destroy({ where: { Code: Code } })
-                            .then(response => {
-                                res.send(response)
+                            .then(() => {
+                                res.sendStatus(200)
                             })
                             .catch(err => {
                                 console.error(err)
@@ -38,8 +38,8 @@ module.exports = function(app, models, jsonParser) {
                             })
                     } else
                         models.Invitation.update({ EntranceNum: code.EntranceNum - 1 }, { where: { Code: Code } })
-                        .then(response => {
-                            res.send(response)
+                        .then(() => {
+                            res.send(200)
                         })
                         .catch(err => {
                             console.error(err)
@@ -47,8 +47,7 @@ module.exports = function(app, models, jsonParser) {
                         })
                 } else {
                     models.Invitation.destroy({ where: { Code: Code } })
-                        .then(response => {
-                            res.send(response)
+                        .then(() => {
                             res.sendStatus(404)
                         })
                         .catch(err => {
