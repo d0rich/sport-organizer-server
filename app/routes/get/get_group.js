@@ -8,7 +8,7 @@ module.exports = function(app, models) {
         models.Group.findOne({
                 where: detail,
                 include: [
-                    { model: models.Section, attributes: ['ID', 'Name'], include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }] },
+                    { model: models.Section, attributes: ['ID', 'Name', 'UserID'], include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }] },
                     { model: models.User, as: 'Trainers', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainer, attributes: [] } },
                     { model: models.User, as: 'Trainees', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainee, attributes: [] } },
                     { model: models.NewsNote, attributes: ['ID', 'Header', 'Text', 'Time'] },

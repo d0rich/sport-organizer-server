@@ -24,6 +24,7 @@ const getUser = require('./get/user')
 const getAT = require('./get/get_at')
 const getSection = require('./get/get_section')
 const getGroup = require('./get/get_group')
+const getInvitation = require('./get/get_invitations')
 
 module.exports = function(app, models, jsonParser, nodemailer) {
 
@@ -53,5 +54,6 @@ module.exports = function(app, models, jsonParser, nodemailer) {
     getAT(app, models)
     getSection(app, models)
     getGroup(app, models)
+    getInvitation(app, models)
 
 }
