@@ -5,7 +5,7 @@ module.exports = function(app, models) {
         if (!UserID) return res.sendStatus(400)
         models.Age_type.findAll({
                 where: { UserID: UserID },
-                order: ['Age_range']
+                order: ['Age_range', 'Name']
             })
             .then(ageType => {
                 if (ageType == null) return res.sendStatus(404)
