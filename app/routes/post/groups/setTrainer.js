@@ -17,7 +17,7 @@ module.exports = function(app, models, jsonParser) {
             })
             .then(group => {
                 if (!group) return res.sendStatus(404)
-                models.Trainer.create({
+                models.InviteTrainer.create({
                         GroupID: group.ID,
                         UserID: UserID
                     })

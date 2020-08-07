@@ -36,9 +36,11 @@ const updateGroup = require('./post/groups/updateGroup')
 const deleteGroup = require('./post/groups/deleteGroup')
 const createInvitation = require('./post/groups/createInvitation')
 const setTrainer = require('./post/groups/setTrainer')
+const becomeTrainer = require('./post/groups/becomeTrainer')
 const useInvitation = require('./post/groups/useInvitation')
     //get
 const getGroup = require('./get/groups/get_group')
+const getInvTrainers = require('./get/groups/get_itrainers')
 const getInvitation = require('./get/groups/get_invitations')
 
 //events
@@ -82,6 +84,8 @@ module.exports = function(app, models, jsonParser, nodemailer) {
     deleteGroup(app, models, jsonParser)
     createInvitation(app, models, jsonParser)
     setTrainer(app, models, jsonParser)
+    becomeTrainer(app, models, jsonParser)
+    getInvTrainers(app, models)
     useInvitation(app, models, jsonParser)
     getGroup(app, models)
     getInvitation(app, models)

@@ -37,6 +37,10 @@ module.exports = function(seq) {
     const Trainee = require('./trainees')(seq, DataTypes)
     User.belongsToMany(Group, { as: 'TraineeIn', through: Trainee, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
     Group.belongsToMany(User, { as: 'Trainees', through: Trainee, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+        //Для приглашения тренеров
+    const InviteTrainer = require('./inv-trainers')(seq, DataTypes)
+    User.belongsToMany(Group, { as: 'InviteTrainerIn', through: InviteTrainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Group.belongsToMany(User, { as: 'InvitedTrainers', through: InviteTrainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
         //Тренера
     const Trainer = require('./trainers')(seq, DataTypes)
     User.belongsToMany(Group, { as: 'TrainerIn', through: Trainer, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
@@ -87,6 +91,7 @@ module.exports = function(seq) {
         Age_type,
         Trainee,
         Trainer,
+        InviteTrainer,
         Event,
         Event_type,
         Event_Group,
