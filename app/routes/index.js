@@ -19,19 +19,25 @@ const getUser = require('./get/users/user')
 //sections
 const createSection = require('./post/sections/createSection')
 const updateSection = require('./post/sections/updateSection')
+const deleteSection = require('./post/sections/deleteSection')
     //get
 const getSection = require('./get/sections/get_section')
 
+//age-types
+const createAT = require('./post/age-types/createAT')
+const updateAT = require('./post/age-types/updateAT')
+const deleteAT = require('./post/age-types/deleteAT')
+    //get
+const getAT = require('./get/groups/get_at')
+
 //groups
-const createAT = require('./post/groups/createAT')
-const updateAT = require('./post/groups/updateAT')
 const createGroup = require('./post/groups/createGroup')
 const updateGroup = require('./post/groups/updateGroup')
+const deleteGroup = require('./post/groups/deleteGroup')
 const createInvitation = require('./post/groups/createInvitation')
 const setTrainer = require('./post/groups/setTrainer')
 const useInvitation = require('./post/groups/useInvitation')
     //get
-const getAT = require('./get/groups/get_at')
 const getGroup = require('./get/groups/get_group')
 const getInvitation = require('./get/groups/get_invitations')
 
@@ -60,18 +66,23 @@ module.exports = function(app, models, jsonParser, nodemailer) {
 
     //sections
     createSection(app, models, jsonParser)
+    updateSection(app, models, jsonParser)
+    deleteSection(app, models, jsonParser)
     getSection(app, models)
 
-    //groups
+    //age-types
     createAT(app, models, jsonParser)
-    createGroup(app, models, jsonParser)
-    createInvitation(app, models, jsonParser)
-    updateSection(app, models, jsonParser)
     updateAT(app, models, jsonParser)
+    deleteAT(app, models, jsonParser)
+    getAT(app, models)
+
+    //groups
+    createGroup(app, models, jsonParser)
     updateGroup(app, models, jsonParser)
+    deleteGroup(app, models, jsonParser)
+    createInvitation(app, models, jsonParser)
     setTrainer(app, models, jsonParser)
     useInvitation(app, models, jsonParser)
-    getAT(app, models)
     getGroup(app, models)
     getInvitation(app, models)
 
