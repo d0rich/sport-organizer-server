@@ -1,4 +1,4 @@
-const auth = require('../../../config/email');
+const auth = require('../../../../config/email');
 
 module.exports = function(app, models, jsonParser, nodemailer) {
     app.post('/act-account', jsonParser, async(req, res) => {

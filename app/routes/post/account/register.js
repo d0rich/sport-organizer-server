@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 var crypto = require('crypto');
-const auth = require('../../../config/email');
+const auth = require('../../../../config/email');
 
 module.exports = function(app, models, jsonParser, nodemailer) {
     app.post('/register', jsonParser, async(req, res) => {

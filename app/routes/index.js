@@ -1,59 +1,75 @@
 const test = require('./test')
 
 //dictionaries
+const fillDictionary = require('./post/dictionaries/fillDictionary')
+    //get
 const getEventDict = require('./get/dictionaries/eventsDict')
 const getGenderDict = require('./get/dictionaries/gendersDict')
 const getNotDict = require('./get/dictionaries/notsDict')
 const getSporttDict = require('./get/dictionaries/sportsDict')
 
-//post
-const register = require('./post/register')
-const actAccount = require('./post/act-account')
-const fillDictionary = require('./post/fillDictionary')
-const createAT = require('./post/creation/createAT')
-const createSection = require('./post/creation/createSection')
-const createGroup = require('./post/creation/createGroup')
-const createInvitation = require('./post/creation/createInvitation')
-const createEvent = require('./post/creation/createEvent')
-const authorize = require('./post/authorize')
-const updateInf = require('./post/updateInf')
-const useInvitation = require('./post/useInvitation')
+//users
+const register = require('./post/account/register')
+const actAccount = require('./post/account/act-account')
+const authorize = require('./post/account/authorize')
+const updateInf = require('./post/account/updateInf')
+    //get
+const getUser = require('./get/users/user')
 
-//get
-const getUser = require('./get/user')
-const getAT = require('./get/get_at')
-const getSection = require('./get/get_section')
-const getGroup = require('./get/get_group')
-const getInvitation = require('./get/get_invitations')
+//sections
+const createSection = require('./post/sections/createSection')
+    //get
+const getSection = require('./get/sections/get_section')
+
+//groups
+const createAT = require('./post/groups/createAT')
+const createGroup = require('./post/groups/createGroup')
+const createInvitation = require('./post/groups/createInvitation')
+const setTrainer = require('./post/groups/setTrainer')
+const useInvitation = require('./post/groups/useInvitation')
+    //get
+const getAT = require('./get/groups/get_at')
+const getGroup = require('./get/groups/get_group')
+const getInvitation = require('./get/groups/get_invitations')
+
+//events
+const createEvent = require('./post/events/createEvent')
+    //get
+
 
 module.exports = function(app, models, jsonParser, nodemailer) {
 
     test(app, models, jsonParser)
 
     //dictionaries
+    fillDictionary(app, models, jsonParser)
     getEventDict(app, models)
     getGenderDict(app, models)
     getNotDict(app, models)
     getSporttDict(app, models)
 
-    //post
+    //user
     register(app, models, jsonParser, nodemailer)
     actAccount(app, models, jsonParser, nodemailer)
-    fillDictionary(app, models, jsonParser)
-    createAT(app, models, jsonParser)
-    createSection(app, models, jsonParser)
-    createGroup(app, models, jsonParser)
-    createInvitation(app, models, jsonParser)
-    createEvent(app, models, jsonParser)
     authorize(app, models, jsonParser)
     updateInf(app, models, jsonParser)
-    useInvitation(app, models, jsonParser)
-
-    //get
     getUser(app, models)
-    getAT(app, models)
+
+    //sections
+    createSection(app, models, jsonParser)
     getSection(app, models)
+
+    //groups
+    createAT(app, models, jsonParser)
+    createGroup(app, models, jsonParser)
+    createInvitation(app, models, jsonParser)
+    setTrainer(app, models, jsonParser)
+    useInvitation(app, models, jsonParser)
+    getAT(app, models)
     getGroup(app, models)
     getInvitation(app, models)
+
+    //events
+    createEvent(app, models, jsonParser)
 
 }
