@@ -1,5 +1,3 @@
-const invitation = require("../../../models/invitation")
-
 module.exports = function(app, models) {
     app.get('/get_itrainers', (req, res) => {
         const UserID = req.param('userID')
