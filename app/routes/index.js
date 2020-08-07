@@ -18,12 +18,15 @@ const getUser = require('./get/users/user')
 
 //sections
 const createSection = require('./post/sections/createSection')
+const updateSection = require('./post/sections/updateSection')
     //get
 const getSection = require('./get/sections/get_section')
 
 //groups
 const createAT = require('./post/groups/createAT')
+const updateAT = require('./post/groups/updateAT')
 const createGroup = require('./post/groups/createGroup')
+const updateGroup = require('./post/groups/updateGroup')
 const createInvitation = require('./post/groups/createInvitation')
 const setTrainer = require('./post/groups/setTrainer')
 const useInvitation = require('./post/groups/useInvitation')
@@ -63,6 +66,9 @@ module.exports = function(app, models, jsonParser, nodemailer) {
     createAT(app, models, jsonParser)
     createGroup(app, models, jsonParser)
     createInvitation(app, models, jsonParser)
+    updateSection(app, models, jsonParser)
+    updateAT(app, models, jsonParser)
+    updateGroup(app, models, jsonParser)
     setTrainer(app, models, jsonParser)
     useInvitation(app, models, jsonParser)
     getAT(app, models)
