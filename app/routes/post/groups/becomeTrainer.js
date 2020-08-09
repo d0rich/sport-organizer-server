@@ -37,5 +37,9 @@ module.exports = function(app, models, jsonParser) {
                         res.sendStatus(500)
                     })
             })
+            .catch(err => {
+                console.error(err)
+                res.sendStatus(500)
+            })
     })
 }
