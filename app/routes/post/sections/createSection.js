@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/createSection', jsonParser, (req, res) => {
+    app.post('/sections/create', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const NewSection = req.body;
         models.Section.create({

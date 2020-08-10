@@ -6,7 +6,7 @@ const encodeBase64Url = function(string) {
 }
 
 module.exports = function(app, models, jsonParser) {
-    app.post('/authorize', jsonParser, async(req, res) => {
+    app.post('/account/authorize', jsonParser, async(req, res) => {
         if (!req.body) return res.sendStatus(400)
         const Login = req.body.login
         const Password = req.body.password

@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/eventsDict', (req, res) => {
+    app.get('/dictionaries/events', (req, res) => {
         models.Event_type.findAll({
                 attributes: ['ID', 'Name'],
                 order: ['Name']

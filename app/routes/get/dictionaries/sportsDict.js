@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/sportsDict', (req, res) => {
+    app.get('/dictionaries/sports', (req, res) => {
         models.Sport_type.findAll({
                 attributes: ['ID', 'Name'],
                 order: ['Name']

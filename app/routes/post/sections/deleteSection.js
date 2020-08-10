@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/deleteSection', jsonParser, (req, res) => {
+    app.post('/sections/delete', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const SectionID = req.body.ID;
         models.Section.findOne({ where: { ID: SectionID } })

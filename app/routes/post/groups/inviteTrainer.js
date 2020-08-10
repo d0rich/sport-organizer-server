@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/inviteTrainer', jsonParser, (req, res) => {
+    app.post('/groups/trainers/invitations/invite', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const Login = req.body.Login
         const GroupID = req.body.GroupID

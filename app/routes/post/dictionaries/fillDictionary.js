@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/fillDictionary', jsonParser, async(req, res) => {
+    app.post('/dictionaries/fill', jsonParser, async(req, res) => {
         const Genders = ['Мужской', 'Женский']
         const Sports = ['Айкидо', 'Академическая гребля', 'Аквааэробика',
             'Акробатика', 'Американский футбол', 'Армрестлинг',

@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/get_section', (req, res) => {
+    app.get('/sections/get', (req, res) => {
         const ID = req.param('sectionID')
         console.log(ID)
         if (!ID) return res.sendStatus(400)

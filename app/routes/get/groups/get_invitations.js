@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/get_invitations', (req, res) => {
+    app.get('/groups/trainees/invitations/get', (req, res) => {
         const GroupID = req.param('GroupID')
         console.log(GroupID)
         if (!GroupID) return res.sendStatus(400)

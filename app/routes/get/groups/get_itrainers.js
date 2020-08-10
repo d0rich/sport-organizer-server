@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/get_itrainers', (req, res) => {
+    app.get('/groups/trainers/invitations/get', (req, res) => {
         const UserID = req.param('userID')
         if (!UserID && !GroupID) return res.sendStatus(400)
         models.InviteTrainer.findAll({

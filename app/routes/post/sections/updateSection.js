@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/updateSection', jsonParser, (req, res) => {
+    app.post('/sections/update', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400)
         const NewInfo = req.body;
         models.Section.findOne({ where: { ID: NewInfo.ID } })

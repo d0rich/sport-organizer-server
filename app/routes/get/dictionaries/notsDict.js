@@ -1,5 +1,5 @@
 module.exports = function(app, models) {
-    app.get('/notsDict', (req, res) => {
+    app.get('/dictionaries/nots', (req, res) => {
         models.Not_type.findAll({
                 attributes: ['ID', 'Name'],
                 order: ['Name']

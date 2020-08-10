@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/createAT', jsonParser, (req, res) => {
+    app.post('/age-types/create', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         if (!req.body.Name) return res.sendStatus(400);
         if (!req.body.SA) return res.sendStatus(400);

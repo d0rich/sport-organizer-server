@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/createInvitation', jsonParser, (req, res) => {
+    app.post('/groups/trainees/invitations/create', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const NewInvitation = req.body;
         models.Invitation.create({

@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/useInvitaion', jsonParser, (req, res) => {
+    app.post('/groups/trainees/invitaions/use', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const UserID = req.body.ID
         const Code = req.body.invCode

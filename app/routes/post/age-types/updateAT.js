@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/updateAT', jsonParser, (req, res) => {
+    app.post('/age-types/update', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400)
         const NewInfo = req.body;
         models.Age_type.findOne({ where: { ID: NewInfo.ID } })

@@ -12,7 +12,7 @@ const getSporttDict = require('./get/dictionaries/sportsDict')
 const register = require('./post/account/register')
 const actAccount = require('./post/account/act-account')
 const authorize = require('./post/account/authorize')
-const updateInf = require('./post/account/updateInf')
+const updateInf = require('./post/users/updateInf')
     //get
 const getUser = require('./get/users/user')
 

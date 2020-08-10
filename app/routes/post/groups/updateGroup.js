@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/updateGroup', jsonParser, (req, res) => {
+    app.post('/groups/update', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400)
         const NewInfo = req.body;
         models.Group.findOne({ where: { ID: NewInfo.ID } })

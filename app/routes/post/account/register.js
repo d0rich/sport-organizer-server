@@ -3,7 +3,7 @@ var crypto = require('crypto');
 const auth = require('../../../../config/email');
 
 module.exports = function(app, models, jsonParser, nodemailer) {
-    app.post('/register', jsonParser, async(req, res) => {
+    app.post('/account/register', jsonParser, async(req, res) => {
         if (!req.body) return res.sendStatus(400);
         let NewUser = req.body;
         const actCode = crypto.randomBytes(16).toString('hex')

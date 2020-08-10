@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/deleteGroup', jsonParser, (req, res) => {
+    app.post('/groups/delete', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const GroupID = req.body.ID;
         models.Group.findOne({ where: { ID: GroupID } })

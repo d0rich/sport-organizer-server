@@ -1,5 +1,5 @@
 module.exports = function(app, models, jsonParser) {
-    app.post('/deleteAT', jsonParser, (req, res) => {
+    app.post('/age-types/delete', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
         const ATypeID = req.body.ID;
         models.Age_type.findOne({ where: { ID: ATypeID } })
