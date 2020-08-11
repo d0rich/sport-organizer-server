@@ -19,8 +19,14 @@ module.exports = function(app, models, jsonParser) {
                     })
                 });
                 models.Event_Group.bulkCreate(events_group)
-                    .catch(err => console.error(err))
-            }).catch(err => console.error(err))
-        res.sendStatus(500)
+                    .catch(err => {
+                        console.error(err)
+                        res.sendStatus(500)
+                    })
+            })
+            .catch(err => {
+                console.error(err)
+                res.sendStatus(500)
+            })
     })
 }
