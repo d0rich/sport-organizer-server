@@ -71,7 +71,7 @@ module.exports = function(app, db, models, jsonParser, nodemailer) {
     createSection(app, models, jsonParser)
     updateSection(app, models, jsonParser)
     deleteSection(app, models, jsonParser)
-    getSection(app, models)
+    getSection(app, db, models)
 
     //age-types
     createAT(app, models, jsonParser)
