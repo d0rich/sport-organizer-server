@@ -17,7 +17,8 @@ module.exports = function(app, sequelize) {
         });
 
         sequelize.query(query, {
-                type: sequelize.QueryTypes.SELECT
+                type: sequelize.QueryTypes.SELECT,
+                nest: true
             })
             .then(groups => {
                 res.send(groups)
