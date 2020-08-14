@@ -9,7 +9,11 @@ module.exports = function(app, models) {
                 where: detail,
                 include: [
                     { model: models.User, attributes: ['ID', 'Login', 'Name', 'Surname'] },
-                    { model: models.Group, attributes: ['ID', 'Name'] },
+                    {
+                        model: models.Group,
+                        attributes: ['ID', 'Name'],
+                        include: [{ model: models.User, as: 'Trainers', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainer, attributes: [] } }]
+                    },
                     { model: models.Sport_type, attributes: ['ID', 'Name'] },
                 ]
             })
