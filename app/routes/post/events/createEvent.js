@@ -1,6 +1,12 @@
 module.exports = function(app, models, jsonParser) {
     app.post('/events/create', jsonParser, (req, res) => {
         if (!req.body) return res.sendStatus(400);
+        if (!req.body.Name) return res.sendStatus(400);
+        if (!req.body.ST) return res.sendStatus(400);
+        if (!req.body.ET) return res.sendStatus(400);
+        if (!req.body.EventTypeID) return res.sendStatus(400);
+        if (!req.body.Groups) return res.sendStatus(400);
+        if (req.body.Groups.length === 0) return res.sendStatus(400);
         const NewEvent = req.body;
         models.Event.create({
                 Name: NewEvent.Name,
