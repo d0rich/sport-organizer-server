@@ -19,7 +19,7 @@ module.exports = function(app, db, models) {
             .then(section => {
                 if (section == null) return res.sendStatus(404)
                 db.query(
-                    `select distinct U."ID", U."Name", U."Surname"
+                    `select distinct U."ID", U."Name", U."Surname", U."Login"
                     from "Sections" inner join "Groups" G on "Sections"."ID" = G."SectionID"
                     inner join "Trainers" T on G."ID" = T."GroupID"
                     inner join "Users" U on T."UserID" = U."ID"
