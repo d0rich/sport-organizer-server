@@ -12,8 +12,7 @@ module.exports = function(app, models) {
                     { model: models.Age_type, attributes: ['ID', 'Name', 'Age_range', 'ItemName'] },
                     { model: models.User, as: 'Trainers', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainer, attributes: [] } },
                     { model: models.User, as: 'Trainees', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainee, attributes: [] } },
-                    { model: models.NewsNote, attributes: ['ID', 'Header', 'Text', 'Time'] },
-                    { model: models.Event, as: 'GroupEvents', attributes: ['ID', 'Name', 'Description', 'TimeRange'], through: { model: models.Event_Group, attributes: [] } }
+                    { model: models.NewsNote, attributes: ['ID', 'Header', 'Text', 'Time'] }
                 ]
             })
             .then(group => {
