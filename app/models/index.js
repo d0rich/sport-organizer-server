@@ -52,8 +52,8 @@ module.exports = function(seq) {
     Event_type.hasMany(Event)
         //События в группах
     const Event_Group = require('./events-groups')(seq, DataTypes)
-    Event.belongsToMany(Group, { as: 'EventsInGroups', through: Event_Group, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
-    Group.belongsToMany(Event, { as: 'GroupEvents', through: Event_Group, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Event.belongsToMany(Group, { through: Event_Group, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Group.belongsToMany(Event, { through: Event_Group, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
         //Объявления 
     const NewsNote = require('./newsNotes')(seq, DataTypes)
         //Объявления в группах

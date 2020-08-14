@@ -46,9 +46,10 @@ const getInvitation = require('./get/groups/get_invitations')
 //events
 const createEvent = require('./post/events/createEvent')
     //get
+const getEvent = require('./get/events/get_event')
+const getEvents = require('./get/events/get_group_events')
 
-
-module.exports = function(app, models, jsonParser, nodemailer) {
+module.exports = function(app, db, models, jsonParser, nodemailer) {
 
     test(app, models, jsonParser)
 
@@ -92,5 +93,7 @@ module.exports = function(app, models, jsonParser, nodemailer) {
 
     //events
     createEvent(app, models, jsonParser)
+    getEvent(app, models)
+    getEvents(app, db)
 
 }
