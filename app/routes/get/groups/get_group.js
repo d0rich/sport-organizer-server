@@ -11,8 +11,7 @@ module.exports = function(app, models) {
                     { model: models.Section, attributes: ['ID', 'Name', 'UserID'], include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }] },
                     { model: models.Age_type, attributes: ['ID', 'Name', 'Age_range', 'ItemName'] },
                     { model: models.User, as: 'Trainers', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainer, attributes: [] } },
-                    { model: models.User, as: 'Trainees', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainee, attributes: [] } },
-                    { model: models.NewsNote, attributes: ['ID', 'Header', 'Text', 'Time'] }
+                    { model: models.User, as: 'Trainees', attributes: ['ID', 'Login', 'Name', 'Surname'], through: { model: models.Trainee, attributes: [] } }
                 ]
             })
             .then(group => {

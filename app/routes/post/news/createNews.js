@@ -5,14 +5,15 @@ module.exports = function(app, models, jsonParser) {
         if (!req.body.Text) return res.sendStatus(400);
         if (!req.body.Time) return res.sendStatus(400);
         if (!req.body.SectionID) return res.sendStatus(400);
-        if (!req.body.EventID) return res.sendStatus(400);
+        if (!req.body.UserID) return res.sendStatus(400);
         const NewsNote = req.body;
         models.NewsNote.create({
                 Header: NewsNote.Header,
                 Text: NewsNote.Text,
                 Time: NewsNote.Time,
                 SectionID: NewsNote.SectionID,
-                EventID: NewsNote.EventID
+                EventID: NewsNote.EventID,
+                UserID: NewsNote.UserID
             })
             .then(result => {
                 console.log(result.dataValues);
