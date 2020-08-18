@@ -4,7 +4,6 @@ module.exports = function(app, models, jsonParser) {
         if (!req.body.Name) return res.sendStatus(400);
         if (!req.body.ST) return res.sendStatus(400);
         if (!req.body.ET) return res.sendStatus(400);
-        if (!req.body.Timed) return res.sendStatus(400);
         if (!req.body.EventTypeID) return res.sendStatus(400);
         if (!req.body.Groups) return res.sendStatus(400);
         if (req.body.Groups.length === 0) return res.sendStatus(400);

@@ -45,9 +45,18 @@ const getInvitation = require('./get/groups/get_invitations')
 
 //events
 const createEvent = require('./post/events/createEvent')
+const updateEvent = require('./post/events/updateEvent')
+const deleteEvent = require('./post/events/deleteEvent')
     //get
 const getEvent = require('./get/events/get_event')
 const getEvents = require('./get/events/get_group_events')
+
+//news
+const createNews = require('./post/news/createNews')
+const updateNews = require('./post/news/updateNews')
+const deleteNews = require('./post/news/deleteNews')
+    //get
+const getNews = require('./get/news/get_news')
 
 module.exports = function(app, db, models, jsonParser, nodemailer) {
 
@@ -93,7 +102,14 @@ module.exports = function(app, db, models, jsonParser, nodemailer) {
 
     //events
     createEvent(app, models, jsonParser)
+    updateEvent(app, models, jsonParser)
+    deleteEvent(app, models, jsonParser)
     getEvent(app, models)
     getEvents(app, db)
 
+    //news-notes
+    createNews(app, models, jsonParser)
+    updateNews(app, models, jsonParser)
+    deleteNews(app, models, jsonParser)
+    getNews(app, models)
 }

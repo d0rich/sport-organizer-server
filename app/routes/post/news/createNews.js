@@ -1,0 +1,25 @@
+module.exports = function(app, models, jsonParser) {
+    app.post('/news-notes/create', jsonParser, (req, res) => {
+        if (!req.body) return res.sendStatus(400);
+        if (!req.body.Header) return res.sendStatus(400);
+        if (!req.body.Text) return res.sendStatus(400);
+        if (!req.body.Time) return res.sendStatus(400);
+        if (!req.body.SectionID) return res.sendStatus(400);
+        if (!req.body.EventID) return res.sendStatus(400);
+        const NewsNote = req.body;
+        models.NewsNote.create({
+                Header: NewsNote.Header,
+                Text: NewsNote.Text,
+                Time: NewsNote.Time,
+                SectionID: NewsNote.SectionID,
+                EventID: NewsNote.EventID
+            })
+            .then(result => {
+                console.log(result.dataValues);
+                res.send(result.dataValues)
+            }).catch(err => {
+                console.error(err)
+                res.sendStatus(500)
+            })
+    })
+}

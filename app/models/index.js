@@ -56,9 +56,9 @@ module.exports = function(seq) {
     Group.belongsToMany(Event, { through: Event_Group, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
         //Объявления 
     const NewsNote = require('./newsNotes')(seq, DataTypes)
-        //Объявления в группах
-    NewsNote.belongsTo(Group, { foreignKey: { allowNull: false }, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
-    Group.hasMany(NewsNote)
+        //Объявления в секциях
+    NewsNote.belongsTo(Section, { foreignKey: { allowNull: false }, onDelete: 'SET NULL', onUpdate: 'CASCADE' })
+    Section.hasMany(NewsNote)
         //Событие
     NewsNote.belongsTo(Event, { onDelete: 'SET NULL', onUpdate: 'CASCADE' })
     Event.hasMany(NewsNote)
