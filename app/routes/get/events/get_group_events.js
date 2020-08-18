@@ -3,7 +3,7 @@ module.exports = function(app, sequelize) {
         const Groups = JSON.parse(req.param('groups'))
         console.log(Groups[0])
         let query = `select distinct "Events"."createdAt", "Events"."updatedAt", "Events"."ID",
-        "Events"."Name", "Events"."Description", "Events"."TimeRange",
+        "Events"."Name", "Events"."Description", "Events"."TimeRange", "Events"."Timed",
         "Events"."EventTypeID",
         "Event-types"."ID" as "Event-type.ID" ,"Event-types"."Name" as "Event-type.Name"
         from "Events"

@@ -17,6 +17,11 @@ module.exports = function(seq, Seq) {
         TimeRange: {
             type: Seq.RANGE(Seq.DATE),
             allowNull: false
+        },
+        Timed: {
+            type: Seq.BOOLEAN,
+            defaultValue: true,
+            allowNull: false
         }
     }, {
         indexes: [{
