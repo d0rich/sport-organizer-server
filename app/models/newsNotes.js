@@ -13,10 +13,6 @@ module.exports = function(seq, Seq) {
         Text: {
             type: Seq.TEXT,
             allowNull: false
-        },
-        Time: {
-            type: Seq.DATE,
-            allowNull: false
         }
     }, {
         indexes: [{

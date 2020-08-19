@@ -8,7 +8,6 @@ module.exports = function(app, models, jsonParser) {
                 models.NewsNote.update({
                         Header: NewInfo.Header,
                         Text: NewInfo.Text,
-                        Time: NewInfo.Time,
                         SectionID: NewInfo.SectionID,
                         EventID: NewInfo.EventID
                     }, { where: { ID: news.ID } })
