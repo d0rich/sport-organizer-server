@@ -7,7 +7,11 @@ module.exports = function(app, models) {
                 where: { ID: ID },
                 include: [
                     { model: models.User, attributes: ['ID', 'Login', 'Name', 'Surname'] },
-                    { model: models.Section, attributes: ['ID', 'Name'] },
+                    {
+                        model: models.Section,
+                        attributes: ['ID', 'Name', 'SportTypeID'],
+                        include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }]
+                    },
                     { model: models.Event, attributes: ['ID', 'Name', 'TimeRange'] }
                 ]
             })

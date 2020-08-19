@@ -57,6 +57,7 @@ const updateNews = require('./post/news/updateNews')
 const deleteNews = require('./post/news/deleteNews')
     //get
 const getNews = require('./get/news/get_news')
+const getNewsParam = require('./get/news/get_news_filter')
 
 module.exports = function(app, db, models, jsonParser, nodemailer) {
 
@@ -112,4 +113,5 @@ module.exports = function(app, db, models, jsonParser, nodemailer) {
     updateNews(app, models, jsonParser)
     deleteNews(app, models, jsonParser)
     getNews(app, models)
+    getNewsParam(app, models)
 }
