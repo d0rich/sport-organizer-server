@@ -12,7 +12,7 @@ module.exports = function(app, models) {
                         attributes: ['ID', 'Name', 'SportTypeID'],
                         include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }]
                     },
-                    { model: models.Event, attributes: ['ID', 'Name', 'TimeRange'] }
+                    { model: models.Event, attributes: ['ID', 'Name', 'Description', 'TimeRange', 'EventTypeID'] }
                 ]
             })
             .then(news => {
