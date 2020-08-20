@@ -59,6 +59,13 @@ const deleteNews = require('./post/news/deleteNews')
 const getNews = require('./get/news/get_news')
 const getNewsParam = require('./get/news/get_news_filter')
 
+//notifications
+const createNot = require('./post/notifications/createNot')
+const updateNot = require('./post/notifications/updateNot')
+const deleteNot = require('./post/notifications/deleteNot')
+    //get
+const getNot = require('./get/notifications/get_notification')
+
 module.exports = function(app, db, models, jsonParser, nodemailer) {
 
     test(app, models, jsonParser)
@@ -114,4 +121,10 @@ module.exports = function(app, db, models, jsonParser, nodemailer) {
     deleteNews(app, models, jsonParser)
     getNews(app, models)
     getNewsParam(app, models)
+
+    //notifications
+    createNot(app, models, jsonParser)
+    updateNot(app, models, jsonParser)
+    deleteNot(app, models, jsonParser)
+    getNot(app, models)
 }

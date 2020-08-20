@@ -9,10 +9,6 @@ module.exports = function(seq, Seq) {
         Comment: {
             type: Seq.TEXT,
             allowNull: false
-        },
-        Time: {
-            type: Seq.DATE,
-            allowNull: false
         }
     }, {
         indexes: [{
