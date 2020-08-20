@@ -27,7 +27,11 @@ module.exports = function(app, models) {
                             where: SportDetails
                         }]
                     },
-                    { model: models.Event, attributes: ['ID', 'Name', 'TimeRange'] }
+                    {
+                        model: models.Event,
+                        attributes: ['ID', 'Name', 'Description', 'TimeRange', 'EventTypeID'],
+                        include: [{ model: models.Event_type, attributes: ['ID', 'Name'] }]
+                    }
                 ]
             })
             .then(news => {
