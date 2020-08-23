@@ -65,6 +65,7 @@ const updateNot = require('./post/notifications/updateNot')
 const deleteNot = require('./post/notifications/deleteNot')
     //get
 const getNot = require('./get/notifications/get_notification')
+const getNotEvents = require('./get/notifications/get_not_events')
 
 module.exports = function(app, db, models, jsonParser, nodemailer) {
 
@@ -127,4 +128,5 @@ module.exports = function(app, db, models, jsonParser, nodemailer) {
     updateNot(app, models, jsonParser)
     deleteNot(app, models, jsonParser)
     getNot(app, models)
+    getNotEvents(app, db)
 }
