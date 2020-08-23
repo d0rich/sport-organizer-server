@@ -1,3 +1,4 @@
+const includeArrays = require('../../../functions/includeArrays')
 module.exports = function(app, sequelize) {
     app.get('/notifications/get/byGroup', (req, res) => {
         const Groups = JSON.parse(req.param('groups'))
@@ -7,7 +8,7 @@ module.exports = function(app, sequelize) {
         let query = `select distinct "Events"."ID",
         "Notifications"."ID" as "Notifications.ID", "Notifications"."Comment" as "Notifications.Comment"
         from "Events"
-        left outer join "Notifications" on "Events"."ID" = "Notifications"."EventID"
+        inner join "Notifications" on "Events"."ID" = "Notifications"."EventID"
         inner join "Events-Groups" on "Events"."ID" = "Events-Groups"."EventID"
         inner join "Groups" as "Groups" on "Events-Groups"."GroupID" = "Groups"."ID"
         inner join "Event-types" on "Events"."EventTypeID" = "Event-types"."ID" 
@@ -22,7 +23,8 @@ module.exports = function(app, sequelize) {
                 nest: true
             })
             .then(groups => {
-                res.send(groups)
+                console.log(includeArrays(groups, ['Notifications']))
+                res.send(includeArrays(groups, ['Notifications']))
             })
             .catch(err => {
                 console.error(err)
