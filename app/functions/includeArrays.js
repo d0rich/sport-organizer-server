@@ -1,5 +1,5 @@
 const unique = require('./unique')
-
+const nullCheck = require('./nullCheck')
 function includeArrays (entities, keys) {
     let newEntities = []
     entities.forEach(e=>{
@@ -14,6 +14,7 @@ function includeArrays (entities, keys) {
             entities
                 .filter(entity => entity.ID === newEntity.ID)
                 .forEach(entity => {
+                    if (nullCheck(entity[key]) !== null)
                     newEntity[key].push(entity[key])
                 })
         })
