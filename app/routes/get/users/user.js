@@ -12,20 +12,32 @@ module.exports = function(app, models) {
                 include: [
                     { model: models.Gender_type, attributes: ['ID', 'Name'] },
                     { model: models.Sport_type, as: 'Sports', attributes: ['ID', 'Name'], through: { attributes: [] } },
-                    { model: models.Section, attributes: ['ID', 'Name'] },
+                    {
+                        model: models.Section,
+                        attributes: ['ID', 'Name'],
+                        include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }]
+                    },
                     {
                         model: models.Group,
                         as: 'TrainerIn',
                         attributes: ['ID', 'Name'],
                         through: { model: models.Trainer, attributes: [] },
-                        include: [{ model: models.Section, attributes: ['ID', 'Name'] }]
+                        include: [{
+                            model: models.Section,
+                            attributes: ['ID', 'Name'],
+                            include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }]
+                        }]
                     },
                     {
                         model: models.Group,
                         as: 'TraineeIn',
                         attributes: ['ID', 'Name'],
                         through: { model: models.Trainee, attributes: [] },
-                        include: [{ model: models.Section, attributes: ['ID', 'Name'] }]
+                        include: [{
+                            model: models.Section,
+                            attributes: ['ID', 'Name'],
+                            include: [{ model: models.Sport_type, attributes: ['ID', 'Name'] }]
+                        }]
                     }
                 ]
             })
