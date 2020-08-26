@@ -1,6 +1,7 @@
 module.exports = function(app, sequelize) {
-    app.get('/notifications/get/all/byEvent', (req, res) => {
-        const ID = req.param('eventID')
+    app.get('/events/get/bySections', (req, res) => {
+        const ID = req.param('sectionID')
+        const Date = JSON.parse(req.param('date'))
         let query = `select distinct N."ID" as "Notification.ID",
         N."Comment" as "Notification.Comment",N."createdAt" as "Notification.createdAt",
         N."updatedAt" as "Notification.updatedAt",N."NotTypeID" as "Notification.NotTypeID",
@@ -10,17 +11,20 @@ module.exports = function(app, sequelize) {
         "Users"."Name" as "User.Name","Users"."Surname" as "User.Surname",
         "Events"."ID","Events"."Name","Events"."TimeRange"
         from "Events"
+        inner join "Events-Groups" on "Events"."ID" = "Events-Groups"."EventID"
+        inner join "Groups" on "Events-Groups"."GroupID" = "Groups"."ID"
+        inner join "Sections" on "Groups"."SectionID" = "Sections"."ID"
         inner join "Notifications" N on "Events"."ID" = N."EventID"
         inner join  "Users" on N."UserID" = "Users"."ID"
         inner join "Not-types" on N."NotTypeID" = "Not-types"."ID"
-        where "Events"."ID"='${ID}'
-        order by "Notification.updatedAt" desc`
+        where "Sections"."ID"='${ID}'
+        and ('${Date}' between date(lower("Events"."TimeRange")) and date(upper("Events"."TimeRange")))`
         sequelize.query(query, {
                 type: sequelize.QueryTypes.SELECT,
                 nest: true
             })
-            .then(notifications => {
-                res.send(notifications)
+            .then(events => {
+                res.send(events)
             })
             .catch(err => {
                 console.error(err)

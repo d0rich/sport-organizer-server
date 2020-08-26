@@ -50,6 +50,7 @@ const deleteEvent = require('./post/events/deleteEvent')
     //get
 const getEvent = require('./get/events/get_event')
 const getEvents = require('./get/events/get_group_events')
+const getSectionsEvents = require('./get/events/get_sections_events')
 
 //news
 const createNews = require('./post/news/createNews')
@@ -117,6 +118,7 @@ module.exports = function(app, db, models, jsonParser, nodemailer) {
     deleteEvent(app, models, jsonParser)
     getEvent(app, models)
     getEvents(app, db)
+    getSectionsEvents(app, db)
 
     //news-notes
     createNews(app, models, jsonParser)

@@ -6,7 +6,7 @@ module.exports = function(app, sequelize) {
         const UT = JSON.parse(req.param('UpTime'))
         console.log(Groups[0])
         let query = `select distinct "Events"."ID",
-        "Notifications"."ID" as "Notifications.ID", "Notifications"."Comment" as "Notifications.Comment"
+        "Notifications"."ID" as "Notification.ID", "Notifications"."Comment" as "Notification.Comment"
         from "Events"
         left outer join "Notifications" on "Events"."ID" = "Notifications"."EventID"
         inner join "Events-Groups" on "Events"."ID" = "Events-Groups"."EventID"
