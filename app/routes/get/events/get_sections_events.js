@@ -5,7 +5,8 @@ module.exports = function(app, sequelize) {
         const EndDate = new Date(StartDate).setMilliseconds(24 * 60 * 60 * 1000).toISOString()
         let query = `select distinct 
         "Events"."ID","Events"."Name","Events"."TimeRange",
-        "Event-types"."ID" as "Event-type.ID" ,"Event-types"."Name" as "Event-type.Name"
+        "Event-types"."ID" as "Event-type.ID" ,"Event-types"."Name" as "Event-type.Name",
+        "Groups"."ID" as "Group.ID"
         from "Events"
         inner join "Event-types" on "Events"."EventTypeID" = "Event-types"."ID" 
         inner join "Events-Groups" on "Events"."ID" = "Events-Groups"."EventID"
