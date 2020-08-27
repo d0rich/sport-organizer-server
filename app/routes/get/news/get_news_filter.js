@@ -12,8 +12,7 @@ module.exports = function(app, models) {
         console.log(Sports[0])
         models.NewsNote.findAll({
                 order: [
-                    ['updatedAt', 'DESC'],
-                    ['createdAt', 'DESC']
+                    ['updatedAt', 'DESC']
                 ],
                 include: [
                     { model: models.User, attributes: ['ID', 'Login', 'Name', 'Surname'] },
@@ -30,7 +29,10 @@ module.exports = function(app, models) {
                     {
                         model: models.Event,
                         attributes: ['ID', 'Name', 'Description', 'TimeRange', 'EventTypeID'],
-                        include: [{ model: models.Event_type, attributes: ['ID', 'Name'] }]
+                        include: [
+                            { model: models.Event_type, attributes: ['ID', 'Name'] },
+                            { model: models.Group, attributes: ['ID'] }
+                        ]
                     }
                 ]
             })

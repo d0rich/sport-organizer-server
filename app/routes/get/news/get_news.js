@@ -15,7 +15,10 @@ module.exports = function(app, models) {
                     {
                         model: models.Event,
                         attributes: ['ID', 'Name', 'Description', 'TimeRange', 'EventTypeID'],
-                        include: [{ model: models.Event_type, attributes: ['ID', 'Name'] }]
+                        include: [
+                            { model: models.Event_type, attributes: ['ID', 'Name'] },
+                            { model: models.Group, attributes: ['ID'] }
+                        ]
                     }
                 ]
             })

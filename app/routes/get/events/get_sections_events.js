@@ -2,7 +2,10 @@ module.exports = function(app, sequelize) {
     app.get('/events/get/bySections', (req, res) => {
         const ID = req.param('sectionID')
         const StartDate = req.param('date')
-        const EndDate = new Date(StartDate).setMilliseconds(24 * 60 * 60 * 1000).toISOString()
+        let EndDate = new Date(StartDate)
+        EndDate.setMilliseconds(24 * 60 * 60 * 1000)
+        EndDate = EndDate.toISOString()
+        console.log(EndDate)
         let query = `select distinct 
         "Events"."ID","Events"."Name","Events"."TimeRange",
         "Event-types"."ID" as "Event-type.ID" ,"Event-types"."Name" as "Event-type.Name",
