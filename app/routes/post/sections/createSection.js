@@ -15,7 +15,7 @@ module.exports = function(app, models, jsonParser) {
                 console.log(result.dataValues)
                 models.NewsNote.create({
                         Header: "HelloWorld!",
-                        Text: "URGay",
+                        Text: "You did it! Have a nice day ;)",
                         SectionID: result.dataValues.ID,
                         UserID: result.dataValues.UserID
                     })

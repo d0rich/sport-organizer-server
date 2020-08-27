@@ -69,6 +69,7 @@ const getNot = require('./get/notifications/get_notification')
 const getNotEvents = require('./get/notifications/get_not_events')
 const getAllNots = require('./get/notifications/get_all_not')
 const getAllEventNots = require('./get/notifications/get_event_all_not')
+const getMyNots = require('./get/notifications/get_my_nots')
 
 module.exports = function(app, db, models, jsonParser, nodemailer) {
 
@@ -135,4 +136,5 @@ module.exports = function(app, db, models, jsonParser, nodemailer) {
     getNotEvents(app, db)
     getAllNots(app, db)
     getAllEventNots(app, db)
+    getMyNots(app, models)
 }
