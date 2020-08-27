@@ -1,16 +1,13 @@
 module.exports = function(app, sequelize) {
     app.get('/events/get/bySections', (req, res) => {
         const ID = req.param('sectionID')
-        const StartDate = req.param('date')
-        const EndDate = new Date(StartDate).setMilliseconds(24*60*60*1000).toISOString()
-        let query = `select distinct N."ID" as "Notification.ID",
-        N."Comment" as "Notification.Comment",N."createdAt" as "Notification.createdAt",
-        N."updatedAt" as "Notification.updatedAt",N."NotTypeID" as "Notification.NotTypeID",
-        N."EventID" as "Notification.EventID",N."UserID" as "Notification.UserID",
+        const Date = JSON.parse(req.param('date'))
+        let query = `select distinct N."ID", N."Comment", N."createdAt",
+        N."updatedAt", N."NotTypeID", N."EventID", N."UserID",
         "Not-types"."ID" as "Not-type.ID","Not-types"."Name" as "Not-type.Name",
         "Users"."ID" as "User.ID","Users"."Login" as "User.Login",
         "Users"."Name" as "User.Name","Users"."Surname" as "User.Surname",
-        "Events"."ID","Events"."Name","Events"."TimeRange"
+        "Events"."ID" as "Event.ID","Events"."Name" as "Event.Name","Events"."TimeRange" as "Event.TimeRange"
         from "Events"
         inner join "Events-Groups" on "Events"."ID" = "Events-Groups"."EventID"
         inner join "Groups" on "Events-Groups"."GroupID" = "Groups"."ID"
