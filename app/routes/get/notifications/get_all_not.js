@@ -1,12 +1,11 @@
 module.exports = function(app, sequelize) {
     app.get('/notifications/get/all/byTrainer', (req, res) => {
         const ID = req.param('userID')
-        let query = `select distinct N."ID" as "Notification.ID",
-         N."Comment" as "Notification.Comment",N."createdAt" as "Notification.createdAt",
-        N."updatedAt" as "Notification.updatedAt",N."NotTypeID" as "Notification.NotTypeID",
-        N."EventID" as "Notification.EventID",N."UserID" as "Notification.UserID",
+        let query = `select distinct N."ID", N."Comment", N."createdAt",
+        N."updatedAt", N."NotTypeID", N."EventID", N."UserID",
         "Not-types"."ID" as "Not-type.ID","Not-types"."Name" as "Not-type.Name",
-        "Trainer"."ID","Trainer"."Login","Trainer"."Name","Trainer"."Surname",
+        "Users"."ID" as "User.ID","Users"."Login" as "User.Login",
+        "Users"."Name" as "User.Name","Users"."Surname" as "User.Surname",
         E."ID" as "Event.ID",E."Name" as "Event.Name",E."TimeRange" as "Event.TimeRange"
         from "Users" as "Trainer"
         inner join "Trainers" on "Trainer"."ID" = "Trainers"."UserID"
@@ -17,7 +16,7 @@ module.exports = function(app, sequelize) {
         inner join "Users" on N."UserID"="Users"."ID"
         inner join "Not-types" on N."NotTypeID" = "Not-types"."ID"
         where "Trainer"."ID"='${ID}'
-        order by "Notification.updatedAt" desc`
+        order by N."updatedAt" desc`
         sequelize.query(query, {
                 type: sequelize.QueryTypes.SELECT,
                 nest: true
