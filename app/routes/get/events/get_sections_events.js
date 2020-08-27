@@ -1,7 +1,8 @@
 module.exports = function(app, sequelize) {
     app.get('/events/get/bySections', (req, res) => {
         const ID = req.param('sectionID')
-        const Date = JSON.parse(req.param('date'))
+        const StartDate = req.param('date')
+        const EndDate = new Date(StartDate).setMilliseconds(24*60*60*1000).toISOString()
         let query = `select distinct N."ID" as "Notification.ID",
         N."Comment" as "Notification.Comment",N."createdAt" as "Notification.createdAt",
         N."updatedAt" as "Notification.updatedAt",N."NotTypeID" as "Notification.NotTypeID",
