@@ -1,4 +1,5 @@
-var crypto = require('crypto');
+const IncToken = require('../../../classes/incToken')
+const crypto = require('crypto')
 
 const encodeBase64Url = function(string) {
     let Base64 = Buffer.from(string).toString('base64')
@@ -6,6 +7,7 @@ const encodeBase64Url = function(string) {
 }
 
 module.exports = function(app, models, jsonParser) {
+
     app.post('/account/authorize', jsonParser, async(req, res) => {
         if (!req.body) return res.sendStatus(400)
         const Login = req.body.login
@@ -20,17 +22,8 @@ module.exports = function(app, models, jsonParser) {
                         return res.sendStatus(500)
                     }
                     if (key.toString('hex') == user.Password) {
-                        let header = { alg: "SHA256", typ: "JWT" }
-                        let payload = {
-                            userID: user.ID,
-                            created: new Date().toISOString(),
-                            sub: 'access'
-                        }
-                        let secretKey = 'S4vEHyg69aLL1uLLlk4'
-                        let unsignedToken = encodeBase64Url(JSON.stringify(header)) + '.' + encodeBase64Url(JSON.stringify(payload))
-                        let signature = crypto.createHmac('sha256', secretKey).update(unsignedToken).digest('hex')
-                        let token = encodeBase64Url(JSON.stringify(header)) + '.' + encodeBase64Url(JSON.stringify(payload)) + '.' + encodeBase64Url(signature)
-                        res.send(token)
+                        const token = new IncToken(user.ID)
+                        res.send(token.token)
                     } else return res.sendStatus(404)
                 })
             })
