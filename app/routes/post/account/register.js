@@ -34,7 +34,7 @@ module.exports = function(app, models, jsonParser, nodemailer) {
 
         let transporter = nodemailer.createTransport(emailConfig);
         let mailOptions = {
-            from: `"Sport Orginizer" <${emailConfig.auth.user}>`,
+            from: `"Sport Organizer" <${emailConfig.auth.user}>`,
             to: NewUser.Email,
             subject: "Ваш код активации аккаунта",
             text: `${actCode}`

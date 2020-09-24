@@ -1,6 +1,5 @@
 module.exports = {
-
-    host: "https://mailer-api.i.bizml.ru/smtp/emails",
+    host: "SMTP.mail.ru",
     secure: false,
     auth: {
         user: 'sport-organizer-sender@mail.ru',
