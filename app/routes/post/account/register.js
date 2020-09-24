@@ -1,6 +1,6 @@
 const { DataTypes } = require("sequelize");
 var crypto = require('crypto');
-const auth = require('../../../../config/email');
+const emailConfig = require('../../../../config/email');
 
 module.exports = function(app, models, jsonParser, nodemailer) {
     app.post('/account/register', jsonParser, async(req, res) => {
@@ -32,10 +32,7 @@ module.exports = function(app, models, jsonParser, nodemailer) {
                     .catch(err => console.error(err.message))
             }).catch(err => console.error(err.message))
 
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: auth
-        });
+        let transporter = nodemailer.createTransport(emailConfig);
         let mailOptions = {
             from: '"Sport Orginizer" <dorich.sender@gmail.com>',
             to: NewUser.Email,
