@@ -14,8 +14,9 @@ module.exports = function(app, models, jsonParser) {
             .then(result => {
                 console.log(result.dataValues)
                 models.NewsNote.create({
-                        Header: "HelloWorld!",
-                        Text: "You did it! Have a nice day ;)",
+                        Header: `Секция "${result.dataValues.Name}" создана!`,
+                        Text: `Именно с этой новости секция "${result.dataValues.Name}" начинает своё пребвание на данной платформе.
+                        Сообщение создано автоматически.`,
                         SectionID: result.dataValues.ID,
                         UserID: result.dataValues.UserID
                     })
