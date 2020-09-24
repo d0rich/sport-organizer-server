@@ -6,7 +6,7 @@ module.exports = function(app, models, jsonParser, nodemailer) {
     app.post('/account/register', jsonParser, async(req, res) => {
         if (!req.body) return res.sendStatus(400);
         let NewUser = req.body;
-        const actCode = crypto.randomBytes(16).toString('hex')
+        const actCode = crypto.randomBytes(4).toString('hex')
         models.User.create({
                 Login: NewUser.Login,
                 PhoneNumber: NewUser.PhoneNumber,
